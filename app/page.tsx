@@ -7,7 +7,7 @@ export default function HomePage() {
     <>
       <Navigation />
 
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 pt-20">
+      <div className="bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 pt-20">
 
         {/* ================= HERO SECTION (NEW) ================= */}
         <div 

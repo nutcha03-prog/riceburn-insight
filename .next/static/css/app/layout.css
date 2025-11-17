@@ -91,6 +91,7 @@
     --color-teal-500: oklch(70.4% 0.14 182.503);
     --color-teal-600: oklch(60% 0.118 184.704);
     --color-blue-500: oklch(62.3% 0.214 259.815);
+    --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-indigo-500: oklch(58.5% 0.233 277.117);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-100: oklch(96.7% 0.003 264.542);
@@ -144,12 +145,10 @@
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     --blur-sm: 8px;
     --blur-md: 12px;
-    --aspect-video: 16 / 9;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: 'Geist', 'Geist Fallback';
     --default-mono-font-family: 'Geist Mono', 'Geist Mono Fallback';
-    --color-border: var(--border);
   }
 }
 @layer base {
@@ -491,9 +490,6 @@
   .my-0 {
     margin-block: calc(var(--spacing) * 0);
   }
-  .my-0\.5 {
-    margin-block: calc(var(--spacing) * 0.5);
-  }
   .my-1 {
     margin-block: calc(var(--spacing) * 1);
   }
@@ -601,9 +597,6 @@
   }
   .aspect-square {
     aspect-ratio: 1 / 1;
-  }
-  .aspect-video {
-    aspect-ratio: var(--aspect-video);
   }
   .size-\(--cell-size\) {
     width: var(--cell-size);
@@ -750,8 +743,26 @@
   .min-h-16 {
     min-height: calc(var(--spacing) * 16);
   }
+  .min-h-\[55vh\] {
+    min-height: 55vh;
+  }
+  .min-h-\[57vh\] {
+    min-height: 57vh;
+  }
+  .min-h-\[60vh\] {
+    min-height: 60vh;
+  }
+  .min-h-\[65vh\] {
+    min-height: 65vh;
+  }
+  .min-h-\[74vh\] {
+    min-height: 74vh;
+  }
   .min-h-\[85vh\] {
     min-height: 85vh;
+  }
+  .min-h-\[vh\] {
+    min-height: vh;
   }
   .min-h-screen {
     min-height: 100vh;
@@ -764,12 +775,6 @@
   }
   .w-\(--sidebar-width\) {
     width: var(--sidebar-width);
-  }
-  .w-0 {
-    width: calc(var(--spacing) * 0);
-  }
-  .w-1 {
-    width: calc(var(--spacing) * 1);
   }
   .w-2 {
     width: calc(var(--spacing) * 2);
@@ -788,6 +793,12 @@
   }
   .w-5 {
     width: calc(var(--spacing) * 5);
+  }
+  .w-6 {
+    width: calc(var(--spacing) * 6);
+  }
+  .w-7 {
+    width: calc(var(--spacing) * 7);
   }
   .w-8 {
     width: calc(var(--spacing) * 8);
@@ -1157,10 +1168,6 @@
     border-style: var(--tw-border-style);
     border-width: 2px;
   }
-  .border-\[1\.5px\] {
-    border-style: var(--tw-border-style);
-    border-width: 1.5px;
-  }
   .border-y {
     border-block-style: var(--tw-border-style);
     border-block-width: 1px;
@@ -1185,17 +1192,8 @@
     --tw-border-style: dashed;
     border-style: dashed;
   }
-  .border-\(--color-border\) {
-    border-color: var(--color-border);
-  }
   .border-border {
     border-color: var(--border);
-  }
-  .border-border\/50 {
-    border-color: var(--border);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--border) 50%, transparent);
-    }
   }
   .border-destructive {
     border-color: var(--destructive);
@@ -1229,9 +1227,6 @@
   }
   .border-l-transparent {
     border-left-color: transparent;
-  }
-  .bg-\(--color-bg\) {
-    background-color: var(--color-bg);
   }
   .bg-accent {
     background-color: var(--accent);
@@ -1481,6 +1476,9 @@
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
   }
+  .py-10 {
+    padding-block: calc(var(--spacing) * 10);
+  }
   .py-12 {
     padding-block: calc(var(--spacing) * 12);
   }
@@ -1543,9 +1541,6 @@
   }
   .align-middle {
     vertical-align: middle;
-  }
-  .font-mono {
-    font-family: 'Geist Mono', 'Geist Mono Fallback';
   }
   .font-sans {
     font-family: 'Geist', 'Geist Fallback';
@@ -1651,6 +1646,9 @@
   }
   .text-background {
     color: var(--background);
+  }
+  .text-blue-600 {
+    color: var(--color-blue-600);
   }
   .text-card-foreground {
     color: var(--card-foreground);
@@ -4092,11 +4090,6 @@
       }
     }
   }
-  .lg\:grid-cols-2 {
-    @media (width >= 64rem) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
   .lg\:grid-cols-4 {
     @media (width >= 64rem) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -4299,84 +4292,6 @@
             background-color: color-mix(in oklab, var(--destructive) 20%, transparent);
           }
         }
-      }
-    }
-  }
-  .\[\&_\.recharts-cartesian-axis-tick_text\]\:fill-muted-foreground {
-    & .recharts-cartesian-axis-tick text {
-      fill: var(--muted-foreground);
-    }
-  }
-  .\[\&_\.recharts-cartesian-grid_line\[stroke\=\'\#ccc\'\]\]\:stroke-border\/50 {
-    & .recharts-cartesian-grid line[stroke='#ccc'] {
-      stroke: var(--border);
-      @supports (color: color-mix(in lab, red, red)) {
-        stroke: color-mix(in oklab, var(--border) 50%, transparent);
-      }
-    }
-  }
-  .\[\&_\.recharts-curve\.recharts-tooltip-cursor\]\:stroke-border {
-    & .recharts-curve.recharts-tooltip-cursor {
-      stroke: var(--border);
-    }
-  }
-  .\[\&_\.recharts-dot\[stroke\=\'\#fff\'\]\]\:stroke-transparent {
-    & .recharts-dot[stroke='#fff'] {
-      stroke: transparent;
-    }
-  }
-  .\[\&_\.recharts-layer\]\:outline-hidden {
-    & .recharts-layer {
-      --tw-outline-style: none;
-      outline-style: none;
-      @media (forced-colors: active) {
-        outline: 2px solid transparent;
-        outline-offset: 2px;
-      }
-    }
-  }
-  .\[\&_\.recharts-polar-grid_\[stroke\=\'\#ccc\'\]\]\:stroke-border {
-    & .recharts-polar-grid [stroke='#ccc'] {
-      stroke: var(--border);
-    }
-  }
-  .\[\&_\.recharts-radial-bar-background-sector\]\:fill-muted {
-    & .recharts-radial-bar-background-sector {
-      fill: var(--muted);
-    }
-  }
-  .\[\&_\.recharts-rectangle\.recharts-tooltip-cursor\]\:fill-muted {
-    & .recharts-rectangle.recharts-tooltip-cursor {
-      fill: var(--muted);
-    }
-  }
-  .\[\&_\.recharts-reference-line_\[stroke\=\'\#ccc\'\]\]\:stroke-border {
-    & .recharts-reference-line [stroke='#ccc'] {
-      stroke: var(--border);
-    }
-  }
-  .\[\&_\.recharts-sector\]\:outline-hidden {
-    & .recharts-sector {
-      --tw-outline-style: none;
-      outline-style: none;
-      @media (forced-colors: active) {
-        outline: 2px solid transparent;
-        outline-offset: 2px;
-      }
-    }
-  }
-  .\[\&_\.recharts-sector\[stroke\=\'\#fff\'\]\]\:stroke-transparent {
-    & .recharts-sector[stroke='#fff'] {
-      stroke: transparent;
-    }
-  }
-  .\[\&_\.recharts-surface\]\:outline-hidden {
-    & .recharts-surface {
-      --tw-outline-style: none;
-      outline-style: none;
-      @media (forced-colors: active) {
-        outline: 2px solid transparent;
-        outline-offset: 2px;
       }
     }
   }
@@ -4833,26 +4748,6 @@
     &>svg {
       width: calc(var(--spacing) * 4);
       height: calc(var(--spacing) * 4);
-    }
-  }
-  .\[\&\>svg\]\:h-2\.5 {
-    &>svg {
-      height: calc(var(--spacing) * 2.5);
-    }
-  }
-  .\[\&\>svg\]\:h-3 {
-    &>svg {
-      height: calc(var(--spacing) * 3);
-    }
-  }
-  .\[\&\>svg\]\:w-2\.5 {
-    &>svg {
-      width: calc(var(--spacing) * 2.5);
-    }
-  }
-  .\[\&\>svg\]\:w-3 {
-    &>svg {
-      width: calc(var(--spacing) * 3);
     }
   }
   .\[\&\>svg\]\:shrink-0 {
